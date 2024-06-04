@@ -1,0 +1,29 @@
+{
+	"name": "pokemon-battle-forge-frontend",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/speedyibbi/pokemon-battle-forge-frontend.git"
+	},
+	"author": "speedyibbi",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/speedyibbi/pokemon-battle-forge-frontend/issues"
+	},
+	"homepage": "https://github.com/speedyibbi/pokemon-battle-forge-frontend#readme",
+	"dependencies": {
+		"@astrojs/check": "^0.7.0",
+		"@astrojs/tailwind": "^5.1.0",
+		"astro": "^4.9.2",
+		"tailwindcss": "^3.4.3",
+		"typescript": "^5.4.5"
+	}
+}
