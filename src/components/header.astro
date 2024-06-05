@@ -1,7 +1,8 @@
+---
+import { Image } from 'astro:assets';
+import Lugia from '../assets/images/lugia.gif';
+---
+
 <header class='h-fit m-[3.125vw_6.25vw] absolute inset-0'>
-	<img
-		src='/images/lugia.gif'
-		alt='lugia'
-		class='w-auto h-[3.35vw] float-right'
-	/>
+	<Image src={Lugia} alt='lugia' class='w-auto h-[3.35vw] float-right' />
 </header>
