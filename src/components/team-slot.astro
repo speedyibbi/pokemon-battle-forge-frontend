@@ -1,0 +1,28 @@
+---
+const { pokemon } = Astro.props;
+---
+
+<button
+	class={`w-[5.2vw] pb-[0.5vw] border-b-[0.1vw] ${pokemon ? 'border-secondary-accent' : 'border-foreground'} hover:border-secondary-accent transition-colors duration-150 will-change-auto`}
+>
+	{
+		pokemon !== undefined ? (
+			<img src='/dummy.png' alt='charizard' class='w-full' />
+		) : (
+			<svg
+				viewBox='0 0 38 38'
+				fill='none'
+				class='w-[1.75vw] m-[1.6vw_auto] stroke-foreground'
+			>
+				<path
+					d='M19.0269 2V35.6538M2.20001 18.8269H35.8539'
+					stroke='inherit'
+					stroke-opacity='0.5'
+					stroke-width='3'
+					stroke-linecap='round'
+					stroke-linejoin='round'
+				/>
+			</svg>
+		)
+	}
+</button>

@@ -1,10 +1,11 @@
 ---
 import MainLayout from '../layouts/main-layout.astro';
+import TeamSlot from '../components/team-slot.astro';
 ---
 
 <MainLayout>
 	<main
-		class='w-full h-full flex place-content-center place-items-center'
+		class='w-full h-full pt-[25%] flex flex-col place-content-between place-items-center'
 	>
 		<h2
 			class='w-[50vw] font-bebas-neue text-[3.35vw] text-foreground text-center tracking-[-3%] leading-[100%] -translate-y-[50%]'
@@ -15,5 +16,13 @@ import MainLayout from '../layouts/main-layout.astro';
 			> to add to your party. Any slots left empty will be filled in to create a
 			strategic team.”
 		</h2>
+		<div class='flex place-items-end gap-[2.6vw]'>
+			<TeamSlot pokemon='charizard' />
+			<TeamSlot />
+			<TeamSlot />
+			<TeamSlot />
+			<TeamSlot />
+			<TeamSlot />
+		</div>
 	</main>
 </MainLayout>

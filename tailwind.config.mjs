@@ -7,6 +7,7 @@ export default {
 				background: 'var(--background)',
 				foreground: 'var(--foreground)',
 				accent: 'var(--accent)',
+				'secondary-accent': 'var(--secondary-accent)',
 			},
 			fontFamily: {
 				'bebas-neue': ['Bebas Neue', 'sans-serif'],
