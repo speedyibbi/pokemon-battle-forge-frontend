@@ -97,7 +97,7 @@
 <script>
 	import { $teamSlots } from '@/stores/team';
 
-	const clearButton = document.getElementById('clear-button')!;
+	const clearButton = document.querySelector('#clear-button')! as HTMLElement;
 
 	$teamSlots.subscribe((value) => {
 		clearButton.style.display = value.length === 0 ? 'none' : 'block';

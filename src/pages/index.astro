@@ -17,7 +17,7 @@ import TeamSlot from '@/components/team-slot.astro';
 			strategic team.”
 		</h2>
 		<div class='flex place-items-end gap-[2.6vw]'>
-			<TeamSlot pokemon='charizard' />
+			<TeamSlot />
 			<TeamSlot />
 			<TeamSlot />
 			<TeamSlot />
@@ -26,3 +26,20 @@ import TeamSlot from '@/components/team-slot.astro';
 		</div>
 	</main>
 </MainLayout>
+
+<script>
+	import { $teamSlots } from '@/stores/team';
+
+	const slots = document.querySelectorAll('.team-slot')!;
+
+	$teamSlots.subscribe((value) => {
+		slots.forEach((slot, idx) => {
+			const img = slot.querySelector('img')!;
+			const svg = slot.querySelector('svg')!;
+
+			img.setAttribute('src', value[idx] ? `/${value[idx]}` : '');
+			img.setAttribute('alt', value[idx] ?? '');
+			svg.style.display = value[idx] ? 'none' : 'block';
+		});
+	});
+</script>
