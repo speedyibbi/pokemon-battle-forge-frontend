@@ -102,4 +102,8 @@
 	$teamSlots.subscribe((value) => {
 		clearButton.style.display = value.length === 0 ? 'none' : 'block';
 	});
+
+	clearButton.addEventListener('click', () => {
+		$teamSlots.set([]);
+	});
 </script>
