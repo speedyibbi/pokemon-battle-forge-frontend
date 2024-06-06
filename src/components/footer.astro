@@ -93,3 +93,13 @@
 		</button>
 	</span>
 </footer>
+
+<script>
+	import { $teamSlots } from '@/stores/team';
+
+	const clearButton = document.getElementById('clear-button')!;
+
+	$teamSlots.subscribe((value) => {
+		clearButton.style.display = value.length === 0 ? 'none' : 'block';
+	});
+</script>
