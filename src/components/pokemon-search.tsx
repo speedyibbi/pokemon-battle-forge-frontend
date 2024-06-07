@@ -1,9 +1,14 @@
 import { useStore } from '@nanostores/react';
 import { $modalState } from '@/stores/modal';
+import type { pokemon } from '@/stores/team';
 
 import BackButton from '@/components/back-button';
 
-export default function PokemonSearch() {
+interface Props {
+	pokemon: pokemon[];
+}
+
+export default function PokemonSearch({ pokemon }: Props) {
 	const modalState = useStore($modalState);
 
 	const submissionHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -21,6 +26,16 @@ export default function PokemonSearch() {
 					className='w-full font-bebas-neue text-[1.25vw] text-foreground placeholder:text-foreground text-center tracking-[-3%] leading-[100%] bg-transparent outline-none'
 				/>
 			</form>
+			<div className='w-full flex flex-wrap place-content-start place-items-end overflow-y-scroll'>
+				{pokemon.map((pokemon, idx) => (
+					<img
+						key={idx}
+						src={pokemon.sprite}
+						alt={pokemon.name}
+						className='w-[5vw]'
+					/>
+				))}
+			</div>
 			<span className='m-[3.125vw_6.25vw] absolute right-0 bottom-0'>
 				<BackButton />
 			</span>

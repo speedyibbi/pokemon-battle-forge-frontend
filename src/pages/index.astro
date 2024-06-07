@@ -3,6 +3,23 @@ import MainLayout from '@/layouts/main-layout.astro';
 import Team from '@/components/team';
 import SideButtons from '@/components/side-buttons';
 import PokemonSearch from '@/components/pokemon-search';
+
+const pokemon = (
+	await Promise.all(
+		(
+			await (
+				await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1000000')
+			).json()
+		).results.map(async ({ url }: { url: string }) => {
+			const mon = await (await fetch(url)).json();
+			return {
+				id: mon.id,
+				name: mon.name,
+				sprite: mon.sprites.front_default,
+			};
+		})
+	)
+).filter(({ sprite }: { sprite: string }) => sprite !== null);
 ---
 
 <MainLayout>
@@ -20,6 +37,6 @@ import PokemonSearch from '@/components/pokemon-search';
 		</h2>
 		<Team client:load />
 		<SideButtons />
-		<PokemonSearch client:load />
+		<PokemonSearch pokemon={pokemon} client:load />
 	</main>
 </MainLayout>

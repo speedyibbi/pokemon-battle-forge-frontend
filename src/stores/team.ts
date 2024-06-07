@@ -1,3 +1,9 @@
 import { atom } from 'nanostores';
 
-export const $teamSlots = atom<string[]>([]);
+export type pokemon = {
+	id: number;
+	name: string;
+	sprite: string;
+};
+
+export const $teamSlots = atom<pokemon[]>([]);

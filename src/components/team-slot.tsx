@@ -1,5 +1,7 @@
+import type { pokemon } from '@/stores/team';
+
 interface Props {
-	pokemon?: string;
+	pokemon?: pokemon;
 	onClick?: () => void;
 }
 
@@ -12,7 +14,11 @@ export default function TeamSlot({ pokemon, onClick }: Props) {
 			} hover:border-secondary-accent transition-colors duration-150 will-change-auto`}
 		>
 			{pokemon ? (
-				<img src='' alt='' className='w-full relative' />
+				<img
+					src={pokemon.sprite}
+					alt={pokemon.name}
+					className='w-full relative'
+				/>
 			) : (
 				<svg
 					viewBox='0 0 38 38'
