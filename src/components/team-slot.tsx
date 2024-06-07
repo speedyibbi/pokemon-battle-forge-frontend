@@ -1,10 +1,12 @@
 interface Props {
 	pokemon?: string;
+	onClick?: () => void;
 }
 
-export default function TeamSlot({ pokemon }: Props) {
+export default function TeamSlot({ pokemon, onClick }: Props) {
 	return (
 		<button
+			onClick={onClick}
 			className={`w-[5.2vw] aspect-square pb-[0.5vw] relative border-b-[0.1vw] ${
 				pokemon ? 'border-secondary-accent' : 'border-foreground'
 			} hover:border-secondary-accent transition-colors duration-150 will-change-auto`}
