@@ -1,6 +1,8 @@
 import { useStore } from '@nanostores/react';
 import { $modalState } from '@/stores/modal';
 
+import BackButton from '@/components/back-button';
+
 export default function PokemonSearch() {
 	const modalState = useStore($modalState);
 
@@ -19,6 +21,9 @@ export default function PokemonSearch() {
 					className='w-full font-bebas-neue text-[1.25vw] text-foreground placeholder:text-foreground text-center tracking-[-3%] leading-[100%] bg-transparent outline-none'
 				/>
 			</form>
+			<span className='m-[3.125vw_6.25vw] absolute right-0 bottom-0'>
+				<BackButton />
+			</span>
 		</dialog>
 	) : (
 		<></>
