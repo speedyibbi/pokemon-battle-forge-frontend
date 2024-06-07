@@ -1,6 +1,7 @@
 ---
 import MainLayout from '@/layouts/main-layout.astro';
-import TeamSlot from '@/components/team-slot.astro';
+import Team from '@/components/team';
+import SideButtons from '@/components/side-buttons';
 ---
 
 <MainLayout>
@@ -16,30 +17,7 @@ import TeamSlot from '@/components/team-slot.astro';
 			> to add to your party. Any slots left empty will be filled in to create a
 			strategic team.”
 		</h2>
-		<div class='flex place-items-end gap-[2.6vw]'>
-			<TeamSlot />
-			<TeamSlot />
-			<TeamSlot />
-			<TeamSlot />
-			<TeamSlot />
-			<TeamSlot />
-		</div>
+		<Team client:load />
+		<SideButtons />
 	</main>
 </MainLayout>
-
-<script>
-	import { $teamSlots } from '@/stores/team';
-
-	const slots = document.querySelectorAll('.team-slot')!;
-
-	$teamSlots.subscribe((value) => {
-		slots.forEach((slot, idx) => {
-			const img = slot.querySelector('img')!;
-			const svg = slot.querySelector('svg')!;
-
-			img.setAttribute('src', value[idx] ? `/${value[idx]}` : '');
-			img.setAttribute('alt', value[idx] ?? '');
-			svg.style.display = value[idx] ? 'none' : 'block';
-		});
-	});
-</script>
