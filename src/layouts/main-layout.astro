@@ -19,7 +19,7 @@ import Lugia from '@/assets/images/lugia.gif';
 				src={Lugia}
 				alt=''
 				loading='eager'
-				class='w-auto h-[3.35vw] float-right'
+				class='w-auto h-[3.35vw] relative float-right z-[100]'
 			/>
 		</header>
 		<slot />
@@ -30,6 +30,10 @@ import Lugia from '@/assets/images/lugia.gif';
 			--foreground: #ffffff;
 			--accent: #ff4040;
 			--secondary-accent: #00c2ff;
+		}
+
+		::-webkit-scrollbar {
+			width: 0;
 		}
 
 		@font-face {
