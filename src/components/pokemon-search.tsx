@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useStore } from '@nanostores/react';
 import { $modalState } from '@/stores/modal';
-import { $teamSlots, $currentSlot } from '@/stores/team';
-import type { pokemon } from '@/stores/team';
+import { $teamSlots, $currentSlot, type pokemon } from '@/stores/team';
 
 import BackButton from '@/components/back-button';
 

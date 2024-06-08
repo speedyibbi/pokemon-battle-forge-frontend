@@ -1,5 +1,5 @@
 import { useStore } from '@nanostores/react';
-import { $teamSlots } from '@/stores/team';
+import { $teamSlots, type pokemon } from '@/stores/team';
 
 export default function SideButtons() {
 	const teamSlots = useStore($teamSlots);
@@ -18,53 +18,70 @@ export default function SideButtons() {
 	const filterHandler = () => {};
 
 	const generateTeamHandler = async () => {
-		return await (
-			await fetch(
-				`${import.meta.env.PUBLIC_POKEMON_BATTLE_FORGE_API}/generate-team`,
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						team: teamSlots
-							.filter((slot) => slot !== undefined)
-							.map((slot) => slot?.name.toLowerCase()),
-					}),
-				}
-			)
-		).json();
+		const generatedTeam = await fetch(
+			`${import.meta.env.PUBLIC_POKEMON_BATTLE_FORGE_API}/generate-team`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					team: teamSlots
+						.filter((slot) => slot !== undefined)
+						.map((slot) => slot?.name.toLowerCase()),
+				}),
+			}
+		);
+
+		if (!generatedTeam.ok) {
+			// todo
+		} else {
+			const filteredGeneratedTeam = [
+				...(await generatedTeam.json()).team.map((teamMember: pokemon) => {
+					return {
+						id: teamMember.id,
+						name: teamMember.name,
+						sprite: teamMember.sprite,
+						types: teamMember.types,
+					};
+				}),
+			].filter((slot) => !teamSlots.map((slot) => slot?.id).includes(slot.id));
+
+			$teamSlots.set([
+				...teamSlots.map((slot) => {
+					return slot === undefined ? filteredGeneratedTeam.shift() : slot;
+				}),
+			]);
+		}
 	};
 
 	return (
 		<aside className='h-fit m-[3.125vw_6.25vw] absolute right-0 bottom-0'>
 			<span className='flex flex-col gap-[1.3vw]'>
-				{teamSlots.find((slot) => slot !== undefined) && (
-					<button onClick={clearHandler}>
-						<svg
-							viewBox='0 0 48 48'
-							fill='none'
-							strokeWidth='0'
-							className='w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] transition-transform duration-150 will-change-transform'
-						>
-							<g clipPath='url(#clip0_151_201)'>
-								<circle cx='24' cy='24' r='24' fill='inherit'></circle>
-								<path
-									d='M31.25 17.25L17.25 31.25M17.25 17.25L31.25 31.25'
-									stroke='inherit'
-									strokeWidth='2'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								></path>
-							</g>
-							<defs>
-								<clipPath id='clip0_151_201'>
-									<rect width='48' height='48' fill='inherit'></rect>
-								</clipPath>
-							</defs>
-						</svg>
-					</button>
-				)}
+				<button onClick={clearHandler}>
+					<svg
+						viewBox='0 0 48 48'
+						fill='none'
+						strokeWidth='0'
+						className='w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] transition-transform duration-150 will-change-transform'
+					>
+						<g clipPath='url(#clip0_151_201)'>
+							<circle cx='24' cy='24' r='24' fill='inherit'></circle>
+							<path
+								d='M31.25 17.25L17.25 31.25M17.25 17.25L31.25 31.25'
+								stroke='inherit'
+								strokeWidth='2'
+								strokeLinecap='round'
+								strokeLinejoin='round'
+							></path>
+						</g>
+						<defs>
+							<clipPath id='clip0_151_201'>
+								<rect width='48' height='48' fill='inherit'></rect>
+							</clipPath>
+						</defs>
+					</svg>
+				</button>
 				<button onClick={filterHandler}>
 					<svg
 						viewBox='0 0 48 48'
@@ -93,7 +110,7 @@ export default function SideButtons() {
 						viewBox='0 0 48 48'
 						fill='none'
 						strokeWidth='0'
-						className='w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] transition-transform duration-150 will-change-transform'
+						className='w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] animate-pulse hover:animate-none transition-transform duration-150 will-change-transform'
 					>
 						<g clipPath='url(#clip0_149_160)'>
 							<circle cx='24' cy='24' r='24' fill='inherit'></circle>
