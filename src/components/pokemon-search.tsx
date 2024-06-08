@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useStore } from '@nanostores/react';
 import { $modalState } from '@/stores/modal';
 import { $teamSlots, $currentSlot } from '@/stores/team';
@@ -39,6 +39,10 @@ export default function PokemonSearch({ pokemon }: Props) {
 		$modalState.set('closed');
 		$currentSlot.set(undefined);
 	};
+
+	useEffect(() => {
+		setSearchedPokemon(pokemon);
+	}, [modalState]);
 
 	return modalState === 'search' ? (
 		<dialog className='w-screen h-screen p-[3.125vw_6.25vw] inset-0 flex flex-col place-content-start place-items-center gap-[5.2vw] bg-black/50 backdrop-blur-3xl'>
