@@ -58,24 +58,32 @@ export default function PokemonSearch({ pokemon }: Props) {
 				/>
 			</form>
 			<div className='w-full py-[3.75vw] relative flex flex-wrap place-content-start place-items-end gap-[1.3vw] overflow-y-scroll'>
-				{searchedPokemon.map((pokemon, idx) => (
-					<button
-						key={idx}
-						onClick={() => {
-							clickHandler(pokemon);
-						}}
-						className='relative group'
-					>
-						<img
-							src={pokemon.sprite}
-							alt={pokemon.name}
-							className='w-[5vw] group-hover:scale-125 transition-all duration-150 will-change-auto'
-						/>
-						<p className='p-[0.5vw] absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-full font-mono font-semibold text-[0.625vw] text-foreground text-center tracking-[30%] leading-[100%] uppercase border border-white bg-black/50 backdrop-blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-150 will-change-auto z-10 pointer-events-none'>
-							{pokemon.name}
-						</p>
-					</button>
-				))}
+				{searchedPokemon.length === 0 ? (
+					<p className='w-full mt-[20vh] font-bebas-neue text-[3.35vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
+						No Pokémon Found.
+					</p>
+				) : (
+					<>
+						{searchedPokemon.map((pokemon, idx) => (
+							<button
+								key={idx}
+								onClick={() => {
+									clickHandler(pokemon);
+								}}
+								className='relative group'
+							>
+								<img
+									src={pokemon.sprite}
+									alt={pokemon.name}
+									className='w-[5vw] group-hover:scale-125 transition-all duration-150 will-change-auto'
+								/>
+								<p className='p-[0.5vw] absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-full font-mono font-semibold text-[0.625vw] text-foreground text-center leading-[100%] uppercase border border-white bg-black/50 backdrop-blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-150 will-change-auto z-10 pointer-events-none'>
+									{pokemon.name}
+								</p>
+							</button>
+						))}
+					</>
+				)}
 			</div>
 			<span className='m-[3.125vw_6.25vw] absolute right-0 bottom-0'>
 				<BackButton />
