@@ -4,6 +4,7 @@ export type pokemon = {
 	id: number;
 	name: string;
 	sprite: string;
+	type: string;
 };
 
 export const $currentSlot = atom<number | undefined>();

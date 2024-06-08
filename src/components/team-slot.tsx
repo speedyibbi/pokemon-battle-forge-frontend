@@ -17,7 +17,45 @@ export default function TeamSlot({ pokemon, onClick }: Props) {
 				<img
 					src={pokemon.sprite}
 					alt={pokemon.name}
-					className='w-full relative group-hover:scale-125 transition-transform duration-150 will-change-transform'
+					className={`w-full relative group-hover:scale-125 transition-transform duration-150 will-change-transform ${
+						pokemon.type === 'normal'
+							? 'drop-shadow-normal'
+							: pokemon.type === 'fire'
+							? 'drop-shadow-fire'
+							: pokemon.type === 'water'
+							? 'drop-shadow-water'
+							: pokemon.type === 'electric'
+							? 'drop-shadow-electric'
+							: pokemon.type === 'grass'
+							? 'drop-shadow-grass'
+							: pokemon.type === 'ice'
+							? 'drop-shadow-ice'
+							: pokemon.type === 'fighting'
+							? 'drop-shadow-fighting'
+							: pokemon.type === 'poison'
+							? 'drop-shadow-poison'
+							: pokemon.type === 'ground'
+							? 'drop-shadow-ground'
+							: pokemon.type === 'flying'
+							? 'drop-shadow-flying'
+							: pokemon.type === 'psychic'
+							? 'drop-shadow-psychic'
+							: pokemon.type === 'bug'
+							? 'drop-shadow-bug'
+							: pokemon.type === 'rock'
+							? 'drop-shadow-rock'
+							: pokemon.type === 'ghost'
+							? 'drop-shadow-ghost'
+							: pokemon.type === 'dragon'
+							? 'drop-shadow-dragon'
+							: pokemon.type === 'dark'
+							? 'drop-shadow-dark'
+							: pokemon.type === 'steel'
+							? 'drop-shadow-steel'
+							: pokemon.type === 'fairy'
+							? 'drop-shadow-fairy'
+							: ''
+					}`}
 				/>
 			) : (
 				<svg
