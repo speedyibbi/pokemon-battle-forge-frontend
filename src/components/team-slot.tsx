@@ -11,13 +11,13 @@ export default function TeamSlot({ pokemon, onClick }: Props) {
 			onClick={onClick}
 			className={`w-[5.2vw] aspect-square pb-[0.5vw] relative border-b-[0.1vw] ${
 				pokemon ? 'border-secondary-accent' : 'border-foreground'
-			} hover:border-secondary-accent transition-colors duration-150 will-change-auto`}
+			} hover:border-secondary-accent transition-colors duration-150 will-change-auto group`}
 		>
 			{pokemon ? (
 				<img
 					src={pokemon.sprite}
 					alt={pokemon.name}
-					className='w-full relative'
+					className='w-full relative group-hover:scale-125 transition-transform duration-150 will-change-transform'
 				/>
 			) : (
 				<svg

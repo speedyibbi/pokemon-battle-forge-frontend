@@ -4,11 +4,22 @@ import { $teamSlots } from '@/stores/team';
 export default function SideButtons() {
 	const teamSlots = useStore($teamSlots);
 
+	const clearHandler = () => {
+		$teamSlots.set([
+			undefined,
+			undefined,
+			undefined,
+			undefined,
+			undefined,
+			undefined,
+		]);
+	};
+
 	return (
 		<aside className='h-fit m-[3.125vw_6.25vw] absolute right-0 bottom-0'>
 			<span className='flex flex-col gap-[1.3vw]'>
-				{teamSlots.length > 0 && (
-					<button onClick={() => $teamSlots.set([])}>
+				{teamSlots.find((slot) => slot !== undefined) && (
+					<button onClick={clearHandler}>
 						<svg
 							viewBox='0 0 48 48'
 							fill='none'
