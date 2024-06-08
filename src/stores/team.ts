@@ -6,4 +6,12 @@ export type pokemon = {
 	sprite: string;
 };
 
-export const $teamSlots = atom<pokemon[]>([]);
+export const $currentSlot = atom<number | undefined>();
+export const $teamSlots = atom<(pokemon | undefined)[]>([
+	undefined,
+	undefined,
+	undefined,
+	undefined,
+	undefined,
+	undefined,
+]);
