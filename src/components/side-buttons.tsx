@@ -19,17 +19,20 @@ export default function SideButtons() {
 
 	const generateTeamHandler = async () => {
 		return await (
-			await fetch('http://127.0.0.1:3000/generate-team', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					team: teamSlots
-						.filter((slot) => slot !== undefined)
-						.map((slot) => slot?.name.toLowerCase()),
-				}),
-			})
+			await fetch(
+				`${import.meta.env.PUBLIC_POKEMON_BATTLE_FORGE_API}/generate-team`,
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						team: teamSlots
+							.filter((slot) => slot !== undefined)
+							.map((slot) => slot?.name.toLowerCase()),
+					}),
+				}
+			)
 		).json();
 	};
 

@@ -8,7 +8,9 @@ const pokemon = (
 	await Promise.all(
 		(
 			await (
-				await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1000000')
+				await fetch(
+					`${import.meta.env.PUBLIC_POKEAPI}/pokemon?offset=0&limit=1000000`
+				)
 			).json()
 		).results.map(async ({ url }: { url: string }) => {
 			const mon = await (await fetch(url)).json();
