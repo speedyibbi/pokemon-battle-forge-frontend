@@ -15,6 +15,24 @@ export default function SideButtons() {
 		]);
 	};
 
+	const filterHandler = () => {};
+
+	const generateTeamHandler = async () => {
+		return await (
+			await fetch('http://127.0.0.1:3000/generate-team', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					team: teamSlots
+						.filter((slot) => slot !== undefined)
+						.map((slot) => slot?.name.toLowerCase()),
+				}),
+			})
+		).json();
+	};
+
 	return (
 		<aside className='h-fit m-[3.125vw_6.25vw] absolute right-0 bottom-0'>
 			<span className='flex flex-col gap-[1.3vw]'>
@@ -44,7 +62,7 @@ export default function SideButtons() {
 						</svg>
 					</button>
 				)}
-				<button>
+				<button onClick={filterHandler}>
 					<svg
 						viewBox='0 0 48 48'
 						fill='none'
@@ -67,7 +85,7 @@ export default function SideButtons() {
 						</defs>
 					</svg>
 				</button>
-				<button>
+				<button onClick={generateTeamHandler}>
 					<svg
 						viewBox='0 0 48 48'
 						fill='none'
