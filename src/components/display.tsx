@@ -27,22 +27,40 @@ export default function Display() {
 					Team Analysis
 				</h2>
 				<span>
-					<h3 className='mb-[0.8vw] font-bebas-neue text-[1.7vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
-						Resistances
-					</h3>
-					<TypeLogos
-						className='w-[3.5vw] hover:saturate-200 hover:scale-[1.2] transition-all duration-150 will-change-auto'
-						options={teamResistances}
-					/>
+					{teamResistances === undefined ||
+					Object.keys(teamResistances).length === 0 ? (
+						<p className='font-bebas-neue text-[1.7vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
+							No Resistances
+						</p>
+					) : (
+						<>
+							<h3 className='mb-[0.8vw] font-bebas-neue text-[1.7vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
+								Resistances
+							</h3>
+							<TypeLogos
+								className='w-[3.5vw] hover:saturate-200 hover:scale-[1.2] transition-all duration-150 will-change-auto'
+								options={teamResistances}
+							/>
+						</>
+					)}
 				</span>
 				<span>
-					<h3 className='mb-[0.8vw] font-bebas-neue text-[1.7vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
-						Weaknesses
-					</h3>
-					<TypeLogos
-						className='w-[3.5vw] hover:saturate-200 hover:scale-[1.2] transition-all duration-150 will-change-auto'
-						options={teamWeaknesses}
-					/>
+					{teamWeaknesses === undefined ||
+					Object.keys(teamWeaknesses).length === 0 ? (
+						<p className='font-bebas-neue text-[1.7vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
+							No Weaknesses
+						</p>
+					) : (
+						<>
+							<h3 className='mb-[0.8vw] font-bebas-neue text-[1.7vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
+								Weaknesses
+							</h3>
+							<TypeLogos
+								className='w-[3.5vw] hover:saturate-200 hover:scale-[1.2] transition-all duration-150 will-change-auto'
+								options={teamWeaknesses}
+							/>
+						</>
+					)}
 				</span>
 			</div>
 		);
