@@ -75,7 +75,7 @@ export default function PokemonSearch({ pokemon }: Props) {
 								<img
 									src={pokemon.sprite}
 									alt={pokemon.name}
-									className='w-[5vw] group-hover:scale-125 transition-all duration-150 will-change-auto'
+									className='w-[5vw] group-hover:scale-[1.25] transition-all duration-150 will-change-auto'
 								/>
 								<p className='p-[0.5vw] absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-full font-mono font-semibold text-[0.625vw] text-foreground text-center leading-[100%] uppercase border border-white bg-black/50 backdrop-blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-150 will-change-auto z-10 pointer-events-none'>
 									{pokemon.name}

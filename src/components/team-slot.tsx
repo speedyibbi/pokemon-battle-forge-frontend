@@ -17,7 +17,7 @@ export default function TeamSlot({ pokemon, onClick }: Props) {
 				<img
 					src={pokemon.sprite}
 					alt={pokemon.name}
-					className={`w-full relative group-hover:scale-125 transition-transform duration-150 will-change-transform ${
+					className={`w-full relative group-hover:scale-[1.25] transition-transform duration-150 will-change-transform ${
 						pokemon.types[0] === 'normal'
 							? 'drop-shadow-normal'
 							: pokemon.types[0] === 'fire'
