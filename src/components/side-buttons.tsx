@@ -63,9 +63,6 @@ export default function SideButtons() {
 				}),
 			]);
 
-			console.log(resistances);
-			console.log(weaknesses);
-
 			$teamResistances.set(resistances);
 			$teamWeaknesses.set(weaknesses);
 

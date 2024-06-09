@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useStore } from '@nanostores/react';
+import { $displayState } from '@/stores/display';
 import { $modalState } from '@/stores/modal';
 import { $teamSlots, $currentSlot, type pokemon } from '@/stores/team';
 
@@ -35,6 +36,7 @@ export default function PokemonSearch({ pokemon }: Props) {
 			}
 		}
 
+		$displayState.set('default');
 		$modalState.set('closed');
 		$currentSlot.set(undefined);
 	};
