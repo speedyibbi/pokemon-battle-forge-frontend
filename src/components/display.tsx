@@ -22,7 +22,7 @@ export default function Display() {
 		);
 	} else if (displayState === 'analysis') {
 		return (
-			<div className='flex flex-col place-content-start place-items-center gap-[1.8vw] -translate-y-[30%]'>
+			<div className='flex flex-col place-content-start place-items-center gap-[1.8vw] -translate-y-[50%]'>
 				<h2 className='inline-flex flex-col place-items-center font-bebas-neue text-[3.35vw] text-foreground text-center tracking-[-3%] leading-[100%] after:w-full after:h-[0.15vw] after:bg-accent after:-translate-y-[0.25vw] after:shadow-[0_0_1vw_0.05vw_var(--accent)]'>
 					Team Analysis
 				</h2>
