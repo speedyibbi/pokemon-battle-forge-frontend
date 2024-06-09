@@ -16,3 +16,5 @@ export const $teamSlots = atom<(pokemon | undefined)[]>([
 	undefined,
 	undefined,
 ]);
+export const $teamResistances = atom<{ [key: string]: number } | undefined>();
+export const $teamWeaknesses = atom<{ [key: string]: number } | undefined>();

@@ -1,4 +1,5 @@
 import { useStore } from '@nanostores/react';
+import { $displayState } from '@/stores/display';
 import { $teamSlots, type pokemon } from '@/stores/team';
 
 export default function SideButtons() {
@@ -13,6 +14,8 @@ export default function SideButtons() {
 			undefined,
 			undefined,
 		]);
+
+		$displayState.set('default');
 	};
 
 	const filterHandler = () => {};
@@ -36,8 +39,10 @@ export default function SideButtons() {
 		if (!generatedTeam.ok) {
 			// todo
 		} else {
+			const { team, resistances, weaknesses } = await generatedTeam.json();
+
 			const filteredGeneratedTeam = [
-				...(await generatedTeam.json()).team.map((teamMember: pokemon) => {
+				...team.map((teamMember: pokemon) => {
 					return {
 						id: teamMember.id,
 						name: teamMember.name,
@@ -52,6 +57,8 @@ export default function SideButtons() {
 					return slot === undefined ? filteredGeneratedTeam.shift() : slot;
 				}),
 			]);
+
+			$displayState.set('analysis');
 		}
 	};
 
