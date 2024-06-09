@@ -38,7 +38,7 @@ export default function Display() {
 								Resistances
 							</h3>
 							<TypeLogos
-								className='w-[3.5vw] hover:saturate-200 hover:scale-[1.2] transition-all duration-150 will-change-auto'
+								className='w-[3.5vw]'
 								options={teamResistances}
 							/>
 						</>
@@ -56,7 +56,7 @@ export default function Display() {
 								Weaknesses
 							</h3>
 							<TypeLogos
-								className='w-[3.5vw] hover:saturate-200 hover:scale-[1.2] transition-all duration-150 will-change-auto'
+								className='w-[3.5vw]'
 								options={teamWeaknesses}
 							/>
 						</>
