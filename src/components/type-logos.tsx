@@ -2,8 +2,6 @@ interface Props {
 	className?: string;
 }
 
-// todo: numbers on top
-
 export function Normal({ className }: Props) {
 	return (
 		<span className={`${className} relative group`}>

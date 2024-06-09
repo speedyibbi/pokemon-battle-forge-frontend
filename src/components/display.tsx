@@ -37,10 +37,7 @@ export default function Display() {
 							<h3 className='mb-[0.8vw] font-bebas-neue text-[1.7vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
 								Resistances
 							</h3>
-							<TypeLogos
-								className='w-[3.5vw]'
-								options={teamResistances}
-							/>
+							<TypeLogos className='w-[3.5vw]' options={teamResistances} />
 						</>
 					)}
 				</span>
@@ -55,13 +52,26 @@ export default function Display() {
 							<h3 className='mb-[0.8vw] font-bebas-neue text-[1.7vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
 								Weaknesses
 							</h3>
-							<TypeLogos
-								className='w-[3.5vw]'
-								options={teamWeaknesses}
-							/>
+							<TypeLogos className='w-[3.5vw]' options={teamWeaknesses} />
 						</>
 					)}
 				</span>
+			</div>
+		);
+	} else if (displayState === 'error') {
+		return (
+			<div className='w-full h-full flex flex-col place-content-start place-items-center -translate-y-[15%]'>
+				<h2 className='w-[55vw] font-bebas-neue text-[3.35vw] text-foreground text-center tracking-[-3%] leading-[100%] -translate-y-[50%]'>
+					<span className='inline-flex flex-col place-items-center text-wrap after:w-full after:h-[0.15vw] after:bg-accent after:-translate-y-[0.25vw] after:shadow-[0_0_1vw_0.05vw_var(--accent)]'>
+						Something broke :(
+					</span>
+				</h2>
+				<a
+					href='/'
+					className='p-[0.5vw_1vw_0.15vw_1vw] font-bebas-neue text-[3.35vw] text-background text-center tracking-[-3%] leading-[100%] bg-foreground rounded-[0.35vw] hover:scale-[1.1] transition-transform duration-150 will-change-auto'
+				>
+					Reload
+				</a>
 			</div>
 		);
 	}
