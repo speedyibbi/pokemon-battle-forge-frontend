@@ -1,6 +1,11 @@
 import { useStore } from '@nanostores/react';
 import { $displayState } from '@/stores/display';
-import { $teamSlots, type pokemon } from '@/stores/team';
+import {
+	$teamSlots,
+	$teamResistances,
+	$teamWeaknesses,
+	type pokemon,
+} from '@/stores/team';
 
 export default function SideButtons() {
 	const teamSlots = useStore($teamSlots);
@@ -57,6 +62,12 @@ export default function SideButtons() {
 					return slot === undefined ? filteredGeneratedTeam.shift() : slot;
 				}),
 			]);
+
+			console.log(resistances);
+			console.log(weaknesses);
+
+			$teamResistances.set(resistances);
+			$teamWeaknesses.set(weaknesses);
 
 			$displayState.set('analysis');
 		}
