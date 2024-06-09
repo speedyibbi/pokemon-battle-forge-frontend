@@ -30,6 +30,8 @@ export default function SideButtons() {
 
 	const generateTeamHandler = async () => {
 		try {
+			$displayState.set('loading');
+
 			const generatedTeam = await fetch(
 				`${import.meta.env.PUBLIC_POKEMON_BATTLE_FORGE_API}/generate-team`,
 				{
@@ -72,10 +74,12 @@ export default function SideButtons() {
 					}),
 				]);
 
-				$teamResistances.set(resistances);
-				$teamWeaknesses.set(weaknesses);
+				setTimeout(() => {
+					$teamResistances.set(resistances);
+					$teamWeaknesses.set(weaknesses);
 
-				$displayState.set('analysis');
+					$displayState.set('analysis');
+				}, 1000);
 			}
 		} catch (error) {
 			$teamResistances.set(undefined);
