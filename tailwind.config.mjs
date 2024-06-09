@@ -12,6 +12,16 @@ export default {
 			fontFamily: {
 				'bebas-neue': ['Bebas Neue', 'sans-serif'],
 			},
+			keyframes: {
+				pokeball: {
+					'0%': { transform: 'rotate(0deg) scale(1)' },
+					'50%': { transform: 'rotate(180deg) scale(2)' },
+					'100%': { transform: 'rotate(360deg) scale(1)' },
+				},
+			},
+			animation: {
+				pokeball: 'pokeball 1s ease-in-out infinite',
+			},
 			dropShadow: {
 				normal: [
 					'0.16vw 0.16vw 1.3vw #9A9DA180',

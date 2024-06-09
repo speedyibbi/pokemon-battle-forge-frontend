@@ -3,6 +3,7 @@ import { $displayState } from '@/stores/display';
 import { $teamResistances, $teamWeaknesses } from '@/stores/team';
 
 import TypeLogos from '@/components/type-logos';
+import Pokeball from '@/components/pokeball';
 
 export default function Display() {
 	const displayState = useStore($displayState);
@@ -58,6 +59,8 @@ export default function Display() {
 				</span>
 			</div>
 		);
+	} else if (displayState === 'loading') {
+		return <Pokeball className='w-[2.5vw] animate-pokeball' />;
 	} else if (displayState === 'error') {
 		return (
 			<div className='w-full h-full flex flex-col place-content-start place-items-center -translate-y-[15%]'>
