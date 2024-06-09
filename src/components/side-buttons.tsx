@@ -20,53 +20,68 @@ export default function SideButtons() {
 			undefined,
 		]);
 
+		$teamResistances.set(undefined);
+		$teamWeaknesses.set(undefined);
+
 		$displayState.set('default');
 	};
 
 	const filterHandler = () => {};
 
 	const generateTeamHandler = async () => {
-		const generatedTeam = await fetch(
-			`${import.meta.env.PUBLIC_POKEMON_BATTLE_FORGE_API}/generate-team`,
-			{
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					team: teamSlots
-						.filter((slot) => slot !== undefined)
-						.map((slot) => slot?.name.toLowerCase()),
-				}),
+		try {
+			const generatedTeam = await fetch(
+				`${import.meta.env.PUBLIC_POKEMON_BATTLE_FORGE_API}/generate-team`,
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						team: teamSlots
+							.filter((slot) => slot !== undefined)
+							.map((slot) => slot?.name.toLowerCase()),
+					}),
+				}
+			);
+
+			if (!generatedTeam.ok) {
+				$teamResistances.set(undefined);
+				$teamWeaknesses.set(undefined);
+
+				$displayState.set('error');
+			} else {
+				const { team, resistances, weaknesses } = await generatedTeam.json();
+
+				const filteredGeneratedTeam = [
+					...team.map((teamMember: pokemon) => {
+						return {
+							id: teamMember.id,
+							name: teamMember.name,
+							sprite: teamMember.sprite,
+							types: teamMember.types,
+						};
+					}),
+				].filter(
+					(slot) => !teamSlots.map((slot) => slot?.id).includes(slot.id)
+				);
+
+				$teamSlots.set([
+					...teamSlots.map((slot) => {
+						return slot === undefined ? filteredGeneratedTeam.shift() : slot;
+					}),
+				]);
+
+				$teamResistances.set(resistances);
+				$teamWeaknesses.set(weaknesses);
+
+				$displayState.set('analysis');
 			}
-		);
+		} catch (error) {
+			$teamResistances.set(undefined);
+			$teamWeaknesses.set(undefined);
 
-		if (!generatedTeam.ok) {
-			// todo
-		} else {
-			const { team, resistances, weaknesses } = await generatedTeam.json();
-
-			const filteredGeneratedTeam = [
-				...team.map((teamMember: pokemon) => {
-					return {
-						id: teamMember.id,
-						name: teamMember.name,
-						sprite: teamMember.sprite,
-						types: teamMember.types,
-					};
-				}),
-			].filter((slot) => !teamSlots.map((slot) => slot?.id).includes(slot.id));
-
-			$teamSlots.set([
-				...teamSlots.map((slot) => {
-					return slot === undefined ? filteredGeneratedTeam.shift() : slot;
-				}),
-			]);
-
-			$teamResistances.set(resistances);
-			$teamWeaknesses.set(weaknesses);
-
-			$displayState.set('analysis');
+			$displayState.set('error');
 		}
 	};
 
