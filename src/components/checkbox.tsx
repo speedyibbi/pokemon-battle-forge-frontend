@@ -3,17 +3,18 @@ import { useState } from 'react';
 interface Props {
 	name: string;
 	label: string;
+	defaultChecked?: boolean;
 }
 
-export default function Checkbox({ name, label }: Props) {
-	const [checked, setChecked] = useState(false);
+export default function Checkbox({ name, label, defaultChecked }: Props) {
+	const [checked, setChecked] = useState(defaultChecked ?? false);
 
 	const checkHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setChecked(event.target.checked);
 	};
 
 	return (
-		<label className='flex place-content-start place-items-center gap-[1.3vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
+		<label className='flex place-content-start place-items-center gap-[1.3vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] cursor-pointer'>
 			{label}
 			<input
 				type='checkbox'

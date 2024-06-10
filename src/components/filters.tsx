@@ -74,7 +74,46 @@ export default function Filters() {
 						Hazard Control
 					</option>
 				</select>
-				<Checkbox name='fullyEvolved' label='Fully Evolved' />
+				<div className='w-[45vw] flex flex-col gap-[5.2vw]'>
+					<div className='w-full flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
+						<Checkbox
+							name='fullyEvolved'
+							label='Fully Evolved'
+							defaultChecked
+						/>
+						<Checkbox name='includeLegendaries' label='Include Legendaries' />
+						<Checkbox name='includeMythical' label='Include Mythical' />
+						<Checkbox name='includeMegas' label='Include Megas' />
+						<Checkbox name='includeGmaxed' label='Include Gmaxed' />
+						<Checkbox name='duplicates' label='Include Duplicates' />
+					</div>
+					<div className='w-full flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
+						<Checkbox name='generation-i' label='Gen I' defaultChecked />
+						<Checkbox name='generation-ii' label='Gen II' defaultChecked />
+						<Checkbox name='generation-iii' label='Gen III' defaultChecked />
+						<Checkbox name='generation-iv' label='Gen IV' defaultChecked />
+						<Checkbox name='generation-v' label='Gen V' defaultChecked />
+						<Checkbox name='generation-vi' label='Gen VI' defaultChecked />
+						<Checkbox name='generation-vii' label='Gen VII' defaultChecked />
+						<Checkbox name='generation-viii' label='Gen VIII' defaultChecked />
+						<Checkbox name='generation-ix' label='Gen IX' defaultChecked />
+					</div>
+				</div>
+				<div className='w-full flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
+					<span className='p-[0.75vw] flex place-content-between place-items-end gap-[2.5vw] border-b-[0.1vw] border-foreground'>
+						<p className='inline font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[120%]'>
+							Random Factor
+						</p>
+						<input
+							type='number'
+							name='randomFactor'
+							min='0'
+							step='0.1'
+							defaultValue='0.5'
+							className='w-[2.5vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] bg-transparent'
+						/>
+					</span>
+				</div>
 			</form>
 			<span className='m-[3.125vw_6.25vw] absolute right-0 bottom-0'>
 				<BackButton />
