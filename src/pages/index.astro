@@ -4,6 +4,7 @@ import Display from '@/components/display';
 import Team from '@/components/team';
 import SideButtons from '@/components/side-buttons';
 import PokemonSearch from '@/components/pokemon-search';
+import Filters from '@/components/filters';
 
 const pokemon = (
 	await Promise.all(
@@ -36,5 +37,6 @@ const pokemon = (
 		<Team client:load />
 		<SideButtons client:load />
 		<PokemonSearch pokemon={pokemon} client:load />
+		<Filters client:load />
 	</main>
 </MainLayout>

@@ -1,5 +1,6 @@
 import { useStore } from '@nanostores/react';
 import { $displayState } from '@/stores/display';
+import { $modalState } from '@/stores/modal';
 import {
 	$teamSlots,
 	$teamResistances,
@@ -26,7 +27,9 @@ export default function SideButtons() {
 		$displayState.set('default');
 	};
 
-	const filterHandler = () => {};
+	const filterHandler = () => {
+		$modalState.set('filters');
+	};
 
 	const generateTeamHandler = async () => {
 		try {
@@ -68,13 +71,13 @@ export default function SideButtons() {
 					(slot) => !teamSlots.map((slot) => slot?.id).includes(slot.id)
 				);
 
-				$teamSlots.set([
-					...teamSlots.map((slot) => {
-						return slot === undefined ? filteredGeneratedTeam.shift() : slot;
-					}),
-				]);
-
 				setTimeout(() => {
+					$teamSlots.set([
+						...teamSlots.map((slot) => {
+							return slot === undefined ? filteredGeneratedTeam.shift() : slot;
+						}),
+					]);
+
 					$teamResistances.set(resistances);
 					$teamWeaknesses.set(weaknesses);
 
