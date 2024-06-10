@@ -9,18 +9,23 @@ interface Props {
 export default function Checkbox({ name, label, defaultChecked }: Props) {
 	const [checked, setChecked] = useState(defaultChecked ?? false);
 
-	const checkHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setChecked(event.target.checked);
+	const checkHandler = (_: React.ChangeEvent<HTMLInputElement>) => {
+		setChecked((prevState) => !prevState);
 	};
 
 	return (
-		<label className='flex place-content-start place-items-center gap-[1.3vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] cursor-pointer'>
+		<label
+			htmlFor={name}
+			className='flex place-content-start place-items-center gap-[1.3vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] cursor-pointer'
+		>
 			{label}
 			<input
+				id={name}
 				type='checkbox'
 				name={name}
+				defaultChecked={checked}
 				onChange={checkHandler}
-				className='hidden'
+				className='w-0 absolute'
 			/>
 			<span className='w-[1.25vw] aspect-square border-[0.15vw] border-foreground rounded-[0.36vw] bg-transparent'>
 				<svg

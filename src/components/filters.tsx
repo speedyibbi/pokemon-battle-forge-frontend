@@ -8,12 +8,21 @@ import NumberInput from '@/components/number-input';
 export default function Filters() {
 	const modalState = useStore($modalState);
 
+	const formChangeHandler = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+
+		const formData = new FormData(event.currentTarget);
+		const data = Object.fromEntries(formData.entries());
+		console.log(data);
+	};
+
 	return modalState === 'filters' ? (
 		<dialog className='w-screen h-screen p-[3.125vw_6.25vw] inset-0 block bg-black/50 backdrop-blur-3xl'>
 			<form
 				onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
 					event.preventDefault();
 				}}
+				onChange={formChangeHandler}
 				className='w-full flex flex-col place-content-start place-items-center gap-[5.2vw]'
 			>
 				<select
