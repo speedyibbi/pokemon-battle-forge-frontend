@@ -2,6 +2,7 @@ import { useStore } from '@nanostores/react';
 import { $modalState } from '@/stores/modal';
 
 import BackButton from '@/components/back-button';
+import Checkbox from '@/components/checkbox';
 
 // const DEFAULT_OPTIONS = {
 // 	battleStyle: 'mixedOffense',
@@ -45,7 +46,7 @@ export default function Filters() {
 					name='battleStyle'
 					className='w-[11.5vw] m-0 p-[0.75vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] border-b-[0.1vw] border-foreground bg-transparent cursor-pointer'
 				>
-					<option selected className='text-background' value='mixedOffense'>
+					<option className='text-background' value='mixedOffense'>
 						Mixed Offense
 					</option>
 					<option className='text-background' value='allOutAttack'>
@@ -73,6 +74,7 @@ export default function Filters() {
 						Hazard Control
 					</option>
 				</select>
+				<Checkbox name='fullyEvolved' label='Fully Evolved' />
 			</form>
 			<span className='m-[3.125vw_6.25vw] absolute right-0 bottom-0'>
 				<BackButton />

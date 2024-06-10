@@ -54,9 +54,10 @@ export default function PokemonSearch({ pokemon }: Props) {
 				className='w-[45vw] p-[0.75vw] border-b-[0.1vw] border-foreground'
 			>
 				<input
+					type='text'
 					onChange={searchHandler}
 					placeholder='Search'
-					className='w-full font-bebas-neue text-[1.25vw] text-foreground placeholder:text-foreground text-center tracking-[-3%] leading-[100%] bg-transparent'
+					className='w-full font-bebas-neue text-[1.25vw] text-foreground placeholder:text-foreground text-center tracking-[-3%] leading-[100%] bg-transparent outline-none'
 				/>
 			</form>
 			<div className='w-full py-[3.75vw] relative flex flex-wrap place-content-start place-items-end gap-[1.3vw] overflow-y-scroll'>
