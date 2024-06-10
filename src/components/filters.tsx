@@ -13,7 +13,35 @@ export default function Filters() {
 
 		const formData = new FormData(event.currentTarget);
 		const data = Object.fromEntries(formData.entries());
-		console.log(data);
+
+		const tmp = {
+			battleStyle: data.battleStyle,
+			fullyEvolved: data.fullyEvolved ? true : false,
+			includeLegendaries: data.includeLegendaries ? true : false,
+			includeMythical: data.includeMythical ? true : false,
+			includeMegas: data.includeMegas ? true : false,
+			includeGmaxed: data.includeGmaxed ? true : false,
+			generations: {
+				'generation-i': data['generation-i'] ? true : false,
+				'generation-ii': data['generation-ii'] ? true : false,
+				'generation-iii': data['generation-iii'] ? true : false,
+				'generation-iv': data['generation-iv'] ? true : false,
+				'generation-v': data['generation-v'] ? true : false,
+				'generation-vi': data['generation-vi'] ? true : false,
+				'generation-vii': data['generation-vii'] ? true : false,
+				'generation-viii': data['generation-viii'] ? true : false,
+				'generation-ix': data['generation-ix'] ? true : false,
+			},
+			blacklist: [],
+			duplicates: data.duplicates ? true : false,
+			weights: {
+				typeResistance: data.typeResistance,
+				typeWeakness: data.typeWeakness,
+			},
+			randomFactor: data.randomFactor,
+		};
+
+		console.log(tmp);
 	};
 
 	return modalState === 'filters' ? (
