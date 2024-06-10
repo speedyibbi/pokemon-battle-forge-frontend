@@ -21,10 +21,10 @@ export type filters = {
 	blacklist: [];
 	duplicates: boolean;
 	weights: {
-		typeResistance: number;
-		typeWeakness: number;
+		typeResistance: string;
+		typeWeakness: string;
 	};
-	randomFactor: number;
+	randomFactor: string;
 };
 
 export const $filters = atom<filters>({
@@ -48,8 +48,8 @@ export const $filters = atom<filters>({
 	blacklist: [],
 	duplicates: false,
 	weights: {
-		typeResistance: 1,
-		typeWeakness: 5,
+		typeResistance: '1',
+		typeWeakness: '5',
 	},
-	randomFactor: 0.5,
+	randomFactor: '0.5',
 });

@@ -1,5 +1,6 @@
 import { useStore } from '@nanostores/react';
 import { $modalState } from '@/stores/modal';
+import { $filters } from '@/stores/filters';
 
 import BackButton from '@/components/back-button';
 import Checkbox from '@/components/checkbox';
@@ -14,8 +15,8 @@ export default function Filters() {
 		const formData = new FormData(event.currentTarget);
 		const data = Object.fromEntries(formData.entries());
 
-		const tmp = {
-			battleStyle: data.battleStyle,
+		$filters.set({
+			battleStyle: data.battleStyle as string,
 			fullyEvolved: data.fullyEvolved ? true : false,
 			includeLegendaries: data.includeLegendaries ? true : false,
 			includeMythical: data.includeMythical ? true : false,
@@ -35,13 +36,11 @@ export default function Filters() {
 			blacklist: [],
 			duplicates: data.duplicates ? true : false,
 			weights: {
-				typeResistance: data.typeResistance,
-				typeWeakness: data.typeWeakness,
+				typeResistance: data.typeResistance as string,
+				typeWeakness: data.typeWeakness as string,
 			},
-			randomFactor: data.randomFactor,
-		};
-
-		console.log(tmp);
+			randomFactor: data.randomFactor as string,
+		});
 	};
 
 	return modalState === 'filters' ? (
