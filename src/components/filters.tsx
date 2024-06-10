@@ -3,33 +3,7 @@ import { $modalState } from '@/stores/modal';
 
 import BackButton from '@/components/back-button';
 import Checkbox from '@/components/checkbox';
-
-// const DEFAULT_OPTIONS = {
-// 	battleStyle: 'mixedOffense',
-// 	fullyEvolved: true,
-// 	includeLegendaries: false,
-// 	includeMythical: false,
-// 	includeMegas: false,
-// 	includeGmaxed: false,
-// 	generations: {
-// 		'generation-i': true,
-// 		'generation-ii': true,
-// 		'generation-iii': true,
-// 		'generation-iv': true,
-// 		'generation-v': true,
-// 		'generation-vi': true,
-// 		'generation-vii': true,
-// 		'generation-viii': true,
-// 		'generation-ix': true,
-// 	},
-// 	blacklist: [],
-// 	duplicates: false,
-// 	weights: {
-// 		typeResistance: 1,
-// 		typeWeakness: 5,
-// 	},
-// 	randomFactor: 0.5,
-// };
+import NumberInput from '@/components/number-input';
 
 export default function Filters() {
 	const modalState = useStore($modalState);
@@ -99,20 +73,22 @@ export default function Filters() {
 						<Checkbox name='generation-ix' label='Gen IX' defaultChecked />
 					</div>
 				</div>
-				<div className='w-full flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
-					<span className='p-[0.75vw] flex place-content-between place-items-end gap-[2.5vw] border-b-[0.1vw] border-foreground'>
-						<p className='inline font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[120%]'>
-							Random Factor
-						</p>
-						<input
-							type='number'
-							name='randomFactor'
-							min='0'
-							step='0.1'
-							defaultValue='0.5'
-							className='w-[2.5vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] bg-transparent'
-						/>
-					</span>
+				<div className='w-[50vw] flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
+					<NumberInput
+						name='typeResistance'
+						label='Type Resistance Weight'
+						defaultValue={1}
+					/>
+					<NumberInput
+						name='typeWeakness'
+						label='Type Weakness Weight'
+						defaultValue={5}
+					/>
+					<NumberInput
+						name='randomFactor'
+						label='Random Factor'
+						defaultValue={0.5}
+					/>
 				</div>
 			</form>
 			<span className='m-[3.125vw_6.25vw] absolute right-0 bottom-0'>
