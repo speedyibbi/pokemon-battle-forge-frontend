@@ -8,10 +8,9 @@ import NumberInput from '@/components/number-input';
 
 export default function Filters() {
 	const modalState = useStore($modalState);
+	const filters = useStore($filters);
 
 	const formChangeHandler = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-
 		const formData = new FormData(event.currentTarget);
 		const data = Object.fromEntries(formData.entries());
 
@@ -43,7 +42,7 @@ export default function Filters() {
 		});
 	};
 
-	return modalState === 'filters' ? (
+	return modalState === 'filters' && filters ? (
 		<dialog className='w-screen h-screen p-[3.125vw_6.25vw] inset-0 block bg-black/50 backdrop-blur-3xl'>
 			<form
 				onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
@@ -53,6 +52,7 @@ export default function Filters() {
 				className='w-full flex flex-col place-content-start place-items-center gap-[5.2vw]'
 			>
 				<select
+					defaultValue={filters.battleStyle}
 					name='battleStyle'
 					className='w-[11.5vw] m-0 p-[0.75vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] border-b-[0.1vw] border-foreground bg-transparent cursor-pointer'
 				>
@@ -89,41 +89,97 @@ export default function Filters() {
 						<Checkbox
 							name='fullyEvolved'
 							label='Fully Evolved'
-							defaultChecked
+							defaultChecked={filters.fullyEvolved}
 						/>
-						<Checkbox name='includeLegendaries' label='Include Legendaries' />
-						<Checkbox name='includeMythical' label='Include Mythical' />
-						<Checkbox name='includeMegas' label='Include Megas' />
-						<Checkbox name='includeGmaxed' label='Include Gmaxed' />
-						<Checkbox name='duplicates' label='Include Duplicates' />
+						<Checkbox
+							name='includeLegendaries'
+							label='Include Legendaries'
+							defaultChecked={filters.includeLegendaries}
+						/>
+						<Checkbox
+							name='includeMythical'
+							label='Include Mythical'
+							defaultChecked={filters.includeMythical}
+						/>
+						<Checkbox
+							name='includeMegas'
+							label='Include Megas'
+							defaultChecked={filters.includeMegas}
+						/>
+						<Checkbox
+							name='includeGmaxed'
+							label='Include Gmaxed'
+							defaultChecked={filters.includeGmaxed}
+						/>
+						<Checkbox
+							name='duplicates'
+							label='Include Duplicates'
+							defaultChecked={filters.duplicates}
+						/>
 					</div>
 					<div className='w-full flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
-						<Checkbox name='generation-i' label='Gen I' defaultChecked />
-						<Checkbox name='generation-ii' label='Gen II' defaultChecked />
-						<Checkbox name='generation-iii' label='Gen III' defaultChecked />
-						<Checkbox name='generation-iv' label='Gen IV' defaultChecked />
-						<Checkbox name='generation-v' label='Gen V' defaultChecked />
-						<Checkbox name='generation-vi' label='Gen VI' defaultChecked />
-						<Checkbox name='generation-vii' label='Gen VII' defaultChecked />
-						<Checkbox name='generation-viii' label='Gen VIII' defaultChecked />
-						<Checkbox name='generation-ix' label='Gen IX' defaultChecked />
+						<Checkbox
+							name='generation-i'
+							label='Gen I'
+							defaultChecked={filters.generations['generation-i']}
+						/>
+						<Checkbox
+							name='generation-ii'
+							label='Gen II'
+							defaultChecked={filters.generations['generation-ii']}
+						/>
+						<Checkbox
+							name='generation-iii'
+							label='Gen III'
+							defaultChecked={filters.generations['generation-iii']}
+						/>
+						<Checkbox
+							name='generation-iv'
+							label='Gen IV'
+							defaultChecked={filters.generations['generation-iv']}
+						/>
+						<Checkbox
+							name='generation-v'
+							label='Gen V'
+							defaultChecked={filters.generations['generation-v']}
+						/>
+						<Checkbox
+							name='generation-vi'
+							label='Gen VI'
+							defaultChecked={filters.generations['generation-vi']}
+						/>
+						<Checkbox
+							name='generation-vii'
+							label='Gen VII'
+							defaultChecked={filters.generations['generation-vii']}
+						/>
+						<Checkbox
+							name='generation-viii'
+							label='Gen VIII'
+							defaultChecked={filters.generations['generation-viii']}
+						/>
+						<Checkbox
+							name='generation-ix'
+							label='Gen IX'
+							defaultChecked={filters.generations['generation-ix']}
+						/>
 					</div>
 				</div>
 				<div className='w-[50vw] flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
 					<NumberInput
 						name='typeResistance'
 						label='Type Resistance Weight'
-						defaultValue={1}
+						defaultValue={parseFloat(filters.weights.typeResistance)}
 					/>
 					<NumberInput
 						name='typeWeakness'
 						label='Type Weakness Weight'
-						defaultValue={5}
+						defaultValue={parseFloat(filters.weights.typeWeakness)}
 					/>
 					<NumberInput
 						name='randomFactor'
 						label='Random Factor'
-						defaultValue={0.5}
+						defaultValue={parseFloat(filters.randomFactor)}
 					/>
 				</div>
 			</form>

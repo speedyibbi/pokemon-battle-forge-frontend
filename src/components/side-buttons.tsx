@@ -1,6 +1,7 @@
 import { useStore } from '@nanostores/react';
 import { $displayState } from '@/stores/display';
 import { $modalState } from '@/stores/modal';
+import { $filters } from '@/stores/filters';
 import {
 	$teamSlots,
 	$teamResistances,
@@ -46,6 +47,7 @@ export default function SideButtons() {
 						team: teamSlots
 							.filter((slot) => slot !== undefined)
 							.map((slot) => slot?.name.toLowerCase()),
+						options: $filters.get(),
 					}),
 				}
 			);
