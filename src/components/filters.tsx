@@ -43,18 +43,18 @@ export default function Filters() {
 	};
 
 	return modalState === 'filters' && filters ? (
-		<dialog className='w-screen h-screen p-[3.125vw_6.25vw] inset-0 block bg-black/50 backdrop-blur-3xl'>
+		<dialog className='w-screen h-screen p-[9vw_6.25vw] lg:p-[3.125vw_6.25vw] inset-0 block bg-black/50 backdrop-blur-3xl'>
 			<form
 				onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
 					event.preventDefault();
 				}}
 				onChange={formChangeHandler}
-				className='w-full flex flex-col place-content-start place-items-center gap-[5.2vw]'
+				className='w-full flex flex-col place-content-start place-items-center gap-[10.4vw] lg:gap-[5.2vw]'
 			>
 				<select
 					defaultValue={filters.battleStyle}
 					name='battleStyle'
-					className='w-[11.5vw] m-0 p-[0.75vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] border-b-[0.1vw] border-foreground bg-transparent cursor-pointer'
+					className='w-[30vw] lg:w-[11.5vw] m-0 p-[0.75vw] font-bebas-neue text-[3.75vw] lg:text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] border-b-[0.1vw] border-foreground bg-transparent cursor-pointer'
 				>
 					<option className='text-background' value='mixedOffense'>
 						Mixed Offense
@@ -84,8 +84,8 @@ export default function Filters() {
 						Hazard Control
 					</option>
 				</select>
-				<div className='w-[45vw] flex flex-col gap-[5.2vw]'>
-					<div className='w-full flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
+				<div className='w-[75vw] lg:w-[45vw] flex flex-col gap-[10.4vw] lg:gap-[5.2vw]'>
+					<div className='w-full flex flex-wrap place-content-center place-items-center gap-[10.4vw] lg:gap-[5.2vw]'>
 						<Checkbox
 							name='fullyEvolved'
 							label='Fully Evolved'
@@ -117,7 +117,7 @@ export default function Filters() {
 							defaultChecked={filters.duplicates}
 						/>
 					</div>
-					<div className='w-full flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
+					<div className='w-full flex flex-wrap place-content-center place-items-center gap-[10.4vw] lg:gap-[5.2vw]'>
 						<Checkbox
 							name='generation-i'
 							label='Gen I'
@@ -167,7 +167,7 @@ export default function Filters() {
 				</div>
 				<label
 					htmlFor='randomFactor'
-					className='flex place-content-between place-items-center gap-[2.5vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%]'
+					className='flex place-content-between place-items-center gap-[7.5vw] lg:gap-[2.5vw] font-bebas-neue text-[3.75vw] lg:text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%]'
 				>
 					Random Factor
 					<input
@@ -178,10 +178,10 @@ export default function Filters() {
 						step='0.1'
 						max='10'
 						defaultValue={parseFloat(filters.randomFactor)}
-						className='w-[10vw]'
+						className='w-[30vw] lg:w-[10vw]'
 					/>
 				</label>
-				<div className='w-[50vw] flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
+				<div className='w-[75vw] lg:w-[50vw] flex flex-wrap place-content-center place-items-center gap-[10.4vw] lg:gap-[5.2vw]'>
 					<NumberInput
 						name='typeResistance'
 						label='Type Resistance Weight'

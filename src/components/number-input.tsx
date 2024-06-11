@@ -19,7 +19,7 @@ export default function NumberInput({ name, label, defaultValue }: Props) {
 	return (
 		<label
 			htmlFor={name}
-			className='p-[0.75vw] flex place-content-between place-items-end font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] gap-[2.5vw] border-b-[0.1vw] border-foreground'
+			className='p-[0.75vw] flex place-content-between place-items-end gap-[7.5vw] lg:gap-[2.5vw] font-bebas-neue text-[3.75vw] lg:text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] border-b-[0.1vw] border-foreground'
 		>
 			{label}
 			<button
@@ -28,7 +28,7 @@ export default function NumberInput({ name, label, defaultValue }: Props) {
 					inputRef.current?.stepDown();
 					triggerChange();
 				}}
-				className='text-[2vw]'
+				className='text-[6vw] lg:text-[2vw]'
 			>
 				-
 			</button>
@@ -40,7 +40,7 @@ export default function NumberInput({ name, label, defaultValue }: Props) {
 				min='0'
 				step='0.1'
 				defaultValue={defaultValue ?? 0}
-				className='w-[2.5vw] text-center bg-transparent'
+				className='w-[7.5vw] lg:w-[2.5vw] text-center bg-transparent'
 			/>
 			<button
 				type='button'
@@ -48,7 +48,7 @@ export default function NumberInput({ name, label, defaultValue }: Props) {
 					inputRef.current?.stepUp();
 					triggerChange();
 				}}
-				className='text-[2vw]'
+				className='text-[6vw] lg:text-[2vw]'
 			>
 				+
 			</button>

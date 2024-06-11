@@ -14,7 +14,7 @@ export default function Checkbox({ name, label, defaultChecked }: Props) {
 	return (
 		<label
 			htmlFor={name}
-			className='relative flex place-content-start place-items-center gap-[1.3vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] cursor-pointer'
+			className='relative flex place-content-start place-items-center gap-[3.9vw] lg:gap-[1.3vw] font-bebas-neue text-[3.75vw] lg:text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%] cursor-pointer'
 		>
 			{label}
 			<input
@@ -25,12 +25,12 @@ export default function Checkbox({ name, label, defaultChecked }: Props) {
 				onChange={() => {
 					setChecked((prevState) => !prevState);
 				}}
-				className='w-[1.25vw] aspect-square relative border-[0.15vw] border-foreground rounded-[0.36vw] bg-transparent appearance-none'
+				className='w-[3.75vw] lg:w-[1.25vw] aspect-square relative border-[0.15vw] border-foreground rounded-[1.08vw] lg:rounded-[0.36vw] bg-transparent appearance-none'
 			/>
 			<svg
 				viewBox='0 0 16 12'
 				fill='none'
-				className={`w-[0.7vw] absolute right-[0.2vw] stroke-accent ${
+				className={`w-[2.1vw] lg:w-[0.7vw] absolute right-[0.6vw] lg:right-[0.2vw] stroke-accent ${
 					checked ? 'opacity-100' : 'opacity-0'
 				}`}
 			>
