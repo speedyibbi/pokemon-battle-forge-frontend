@@ -7,7 +7,7 @@ export default function BackButton() {
 				viewBox='0 0 48 48'
 				fill='none'
 				strokeWidth='0'
-				className='w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] transition-transform duration-150 will-change-transform'
+				className='w-[7.5vw] lg:w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] transition-transform duration-150 will-change-transform'
 			>
 				<g clipPath='url(#clip0_166_189)'>
 					<circle cx='24' cy='24' r='24' fill='inherit'></circle>
