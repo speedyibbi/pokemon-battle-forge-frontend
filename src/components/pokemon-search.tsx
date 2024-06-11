@@ -48,7 +48,7 @@ export default function PokemonSearch({ pokemon }: Props) {
 	}, [modalState]);
 
 	return modalState === 'search' ? (
-		<dialog className='w-screen h-screen p-[3.125vw_6.25vw] inset-0 flex flex-col place-content-start place-items-center gap-[5.2vw] bg-transparent'>
+		<dialog className='w-screen h-screen p-[9vw_6.25vw] lg:p-[3.125vw_6.25vw] inset-0 flex flex-col place-content-start place-items-center gap-[10.4vw] lg:gap-[5.2vw] bg-transparent'>
 			<div className='w-full h-full absolute inset-0 bg-black/50 backdrop-blur-3xl' />
 			<form
 				onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
@@ -60,12 +60,12 @@ export default function PokemonSearch({ pokemon }: Props) {
 					type='text'
 					onChange={searchHandler}
 					placeholder='Search'
-					className='w-full font-bebas-neue text-[1.25vw] text-foreground placeholder:text-foreground text-center tracking-[-3%] leading-[100%] bg-transparent outline-none'
+					className='w-full font-bebas-neue text-[3.75vw] lg:text-[1.25vw] text-foreground placeholder:text-foreground text-center tracking-[-3%] leading-[100%] bg-transparent outline-none'
 				/>
 			</form>
 			<div className='w-full py-[3.75vw] relative flex flex-wrap place-content-start place-items-end gap-[1.3vw] overflow-y-scroll'>
 				{searchedPokemon.length === 0 ? (
-					<p className='w-full mt-[20vh] font-bebas-neue text-[3.35vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
+					<p className='w-full mt-[20vh] font-bebas-neue text-[6.7vw] lg:text-[3.35vw] text-foreground text-center tracking-[-3%] leading-[100%]'>
 						No Pokémon Found.
 					</p>
 				) : (
@@ -84,9 +84,9 @@ export default function PokemonSearch({ pokemon }: Props) {
 									onLoad={() => {
 										setLoadedImagesCount((prev) => prev + 1);
 									}}
-									className='w-[5vw] group-hover:scale-[1.25] transition-all duration-150 will-change-auto'
+									className='w-[12.75vw] lg:w-[5vw] group-hover:scale-[1.25] transition-all duration-150 will-change-auto'
 								/>
-								<p className='p-[0.5vw] absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-full font-mono font-semibold text-[0.625vw] text-foreground text-center leading-[100%] uppercase border border-white bg-black/50 backdrop-blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-150 will-change-auto z-10 pointer-events-none'>
+								<p className='p-[0.5vw] absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-full font-mono font-semibold text-[2.5vw] lg:text-[0.625vw] text-foreground text-center leading-[100%] uppercase border border-white bg-black/50 backdrop-blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-150 will-change-auto z-10 pointer-events-none'>
 									{pokemon.name}
 								</p>
 							</button>
@@ -96,7 +96,7 @@ export default function PokemonSearch({ pokemon }: Props) {
 			</div>
 			{loadedImagesCount < pokemon.length ? (
 				<div className='w-full h-full absolute inset-0 flex place-content-center place-items-center bg-black/50 backdrop-blur-3xl'>
-					<Pokeball className='w-[2.5vw] animate-pokeball' />
+					<Pokeball className='w-[7.5vw] lg:w-[2.5vw] animate-pokeball' />
 				</div>
 			) : (
 				<></>
