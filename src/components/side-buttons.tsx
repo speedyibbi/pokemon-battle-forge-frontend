@@ -95,14 +95,14 @@ export default function SideButtons() {
 	};
 
 	return (
-		<aside className='h-fit m-[3.125vw_6.25vw] absolute right-0 bottom-0'>
-			<span className='flex flex-col gap-[1.3vw]'>
+		<aside className='h-fit m-[3.125vw_6.25vw] absolute lg:right-0 bottom-0'>
+			<span className='flex lg:flex-col gap-[3.9vw] lg:gap-[1.3vw]'>
 				<button onClick={clearHandler}>
 					<svg
 						viewBox='0 0 48 48'
 						fill='none'
 						strokeWidth='0'
-						className='w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] transition-transform duration-150 will-change-transform'
+						className='w-[7.5vw] lg:w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] transition-transform duration-150 will-change-transform'
 					>
 						<g clipPath='url(#clip0_151_201)'>
 							<circle cx='24' cy='24' r='24' fill='inherit'></circle>
@@ -126,7 +126,7 @@ export default function SideButtons() {
 						viewBox='0 0 48 48'
 						fill='none'
 						strokeWidth='0'
-						className='w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] transition-transform duration-150 will-change-transform'
+						className='w-[7.5vw] lg:w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] transition-transform duration-150 will-change-transform'
 					>
 						<g clipPath='url(#clip0_151_170)'>
 							<circle cx='24' cy='24' r='24' fill='inherit'></circle>
@@ -149,7 +149,7 @@ export default function SideButtons() {
 						viewBox='0 0 48 48'
 						fill='none'
 						strokeWidth='0'
-						className='w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] animate-pulse hover:animate-none transition-transform duration-150 will-change-transform'
+						className='w-[7.5vw] lg:w-[2.5vw] fill-foreground stroke-background hover:scale-[1.2] animate-pulse hover:animate-none transition-transform duration-150 will-change-transform'
 					>
 						<g clipPath='url(#clip0_149_160)'>
 							<circle cx='24' cy='24' r='24' fill='inherit'></circle>

@@ -13,7 +13,7 @@ export default function Team() {
 	};
 
 	return (
-		<div className='flex flex-wrap place-content-center place-items-end gap-[5.2vw] lg:gap-[2.6vw]'>
+		<div className='pb-[12.5vw] lg:pb-0 flex flex-wrap place-content-center place-items-end gap-[5.2vw] lg:gap-[2.6vw]'>
 			{teamSlots.map((_, idx) => (
 				<TeamSlot
 					key={idx}

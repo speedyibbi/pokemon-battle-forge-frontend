@@ -61,7 +61,7 @@ export default function TeamSlot({ pokemon, onClick }: Props) {
 				<svg
 					viewBox='0 0 38 38'
 					fill='none'
-					className='w-[3.5vw] lg:w-[1.75vw] m-[1.6vw_auto] stroke-foreground'
+					className='w-[3.5vw] lg:w-[1.25vw] m-[1.6vw_auto] stroke-foreground'
 				>
 					<path
 						d='M19.0269 2V35.6538M2.20001 18.8269H35.8539'

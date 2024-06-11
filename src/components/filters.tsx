@@ -14,8 +14,6 @@ export default function Filters() {
 		const formData = new FormData(event.currentTarget);
 		const data = Object.fromEntries(formData.entries());
 
-		console.log(data);
-
 		$filters.set({
 			battleStyle: data.battleStyle as string,
 			fullyEvolved: data.fullyEvolved ? true : false,
