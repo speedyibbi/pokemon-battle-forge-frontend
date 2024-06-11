@@ -14,6 +14,8 @@ export default function Filters() {
 		const formData = new FormData(event.currentTarget);
 		const data = Object.fromEntries(formData.entries());
 
+		console.log(data);
+
 		$filters.set({
 			battleStyle: data.battleStyle as string,
 			fullyEvolved: data.fullyEvolved ? true : false,
@@ -165,6 +167,22 @@ export default function Filters() {
 						/>
 					</div>
 				</div>
+				<label
+					htmlFor='randomFactor'
+					className='flex place-content-between place-items-center gap-[2.5vw] font-bebas-neue text-[1.25vw] text-foreground text-center tracking-[-3%] leading-[100%]'
+				>
+					Random Factor
+					<input
+						id='randomFactor'
+						type='range'
+						name='randomFactor'
+						min='0'
+						step='0.1'
+						max='10'
+						defaultValue={parseFloat(filters.randomFactor)}
+						className='w-[10vw]'
+					/>
+				</label>
 				<div className='w-[50vw] flex flex-wrap place-content-center place-items-center gap-[5.2vw]'>
 					<NumberInput
 						name='typeResistance'
@@ -175,11 +193,6 @@ export default function Filters() {
 						name='typeWeakness'
 						label='Type Weakness Weight'
 						defaultValue={parseFloat(filters.weights.typeWeakness)}
-					/>
-					<NumberInput
-						name='randomFactor'
-						label='Random Factor'
-						defaultValue={parseFloat(filters.randomFactor)}
 					/>
 				</div>
 			</form>
