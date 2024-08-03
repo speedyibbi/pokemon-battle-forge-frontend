@@ -6,16 +6,32 @@ import SideButtons from '@/components/side-buttons';
 import PokemonSearch from '@/components/pokemon-search';
 import Filters from '@/components/filters';
 
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function fetchWithRetry(url: string, retries = 3) {
+	for (let i = 0; i < retries; i++) {
+		try {
+			const response = await fetch(url);
+			if (!response.ok)
+				throw new Error(`HTTP error! status: ${response.status}`);
+			return await response.json();
+		} catch (error) {
+			if (i === retries - 1) throw error;
+			await delay(1000);
+		}
+	}
+}
+
+const BATCH_SIZE = 1000000;
+const pokemonList = await fetchWithRetry(
+	`${import.meta.env.PUBLIC_POKEAPI}/pokemon?offset=0&limit=${BATCH_SIZE}`
+);
+
 const pokemon = (
 	await Promise.all(
-		(
-			await (
-				await fetch(
-					`${import.meta.env.PUBLIC_POKEAPI}/pokemon?offset=0&limit=1000000`
-				)
-			).json()
-		).results.map(async ({ url }: { url: string }) => {
-			const mon = await (await fetch(url)).json();
+		pokemonList.results.map(async ({ url }: { url: string }, index: number) => {
+			await delay(index * 100);
+			const mon = await fetchWithRetry(url);
 			return {
 				id: mon.id,
 				name: mon.name,
