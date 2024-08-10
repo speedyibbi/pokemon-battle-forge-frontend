@@ -95,7 +95,7 @@ export default function SideButtons() {
 	};
 
 	return (
-		<aside className='h-fit m-[3.125vw_6.25vw] absolute lg:right-0 bottom-0'>
+		<aside className='h-fit m-[3.125vw_6.25vw] absolute lg:right-0 bottom-[7.5vh] lg:bottom-0'>
 			<span className='flex lg:flex-col gap-[3.9vw] lg:gap-[1.3vw]'>
 				<button onClick={clearHandler}>
 					<svg
